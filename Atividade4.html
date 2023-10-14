@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4</title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <h1>Atividade 4</h1>
+    <p>Digite um número que o outro jogador deve adivinhar, esse número deve ter o valor de 1 a 10:</p>
+    
+    <input type="number" id="numeroSecreto" placeholder="Número secreto">
+    <button onclick="iniciarJogo()">Iniciar</button>
+
+    <div id="jogo" style="display: none;"></div>
+        <p>Sua vez jogador 2: </p>
+        <input type="number" id="tentativa" placeholder="Tentativa">
+        <button onclick="verificarTentativa()">Tentar</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        let numeroSecreto;
+        let tentativas = 0;
+
+        function iniciarJogo() {
+            numeroSecreto = document.getElementById("numeroSecreto").value;
+            if (numeroSecreto >= 1 && numeroSecreto <= 10) {
+                document.getElementById("jogo").style.display = "block";
+            } else {
+                alert("Por favor, escolha um número entre 1 e 10.");
+            }
+        }
+
+        function verificarTentativa() {
+            const tentativa = document.getElementById("tentativa").value;
+            if (tentativa >= 0 && tentativa <11) {
+                tentativas++;
+
+                if (tentativa == numeroSecreto){
+                    document.getElementById("resultado").innerHTML = "Parabéns! Você acertou o número " + numeroSecreto + " em " + tentativas + "tentativa(s).";
+                } else if (tentativa < numeroSecreto){
+                    document.getElementById("resultado").innerHTML = "Tente novamente! O número secreto é maior";
+                    }
+                else {
+                    document.getElementById("resultado").innerHTML = "Tente novamente! O número secreto é menor";
+                    }
+            }   else {
+                alert("Por favor, insira um número válido entre 1 e 10.");}
+            }
+        
+    </script>
+</body>
+</html>
